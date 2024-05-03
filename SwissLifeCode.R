@@ -10,7 +10,7 @@ library(lmtest)
 #read in data & data cleaning
 par(mfrow=c(1,1))
 life = read.csv("SwissLifeExpectancy.csv",header = TRUE)
-life.ts.trunc = ts((life$life.expectancy[28:99]),start=life$year[28],end=life$year[99])
+life.ts.trunc = ts(as.numeric(life$life.expectancy[28:99]),start=life$year[28],end=life$year[99])
 plot ( life.ts.trunc,ylab = 'Life Expectancy (Yrs.)')
 #idenfy possible transformation
 BoxCox.ar(life.ts.trunc)
